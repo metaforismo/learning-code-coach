@@ -1,6 +1,6 @@
 ---
 name: learning-code-coach
-description: Adaptive learning coach for software development, technical work, and AI-assisted artifacts, especially coding. Use when the user wants Codex to help juniors or other learners understand implementation choices, architecture, debugging, reviews, tests, frontend, backend, mobile, data, DevOps, documentation, or AI-generated output while still completing the task. Trigger when the user asks for explanations at their level, mentoring, onboarding, learning while building, "explain this architecture", "teach me", "junior-friendly", or configuration of a learner profile.
+description: Adaptive learning coach for software development, technical work, and AI-assisted artifacts, especially coding. Use when the user wants the assistant to help juniors or other learners understand implementation choices, architecture, debugging, reviews, tests, frontend, backend, mobile, data, DevOps, documentation, or AI-generated output while still completing the task. Trigger when the user asks for explanations at their level, mentoring, onboarding, learning while building, "explain this architecture", "teach me", "junior-friendly", or configuration of a learner profile.
 ---
 
 # Learning Code Coach
@@ -8,6 +8,8 @@ description: Adaptive learning coach for software development, technical work, a
 ## Overview
 
 Use this skill to make AI-assisted development educational without slowing the work to a halt. Complete the user's requested task, but add calibrated explanations, small checks for understanding, and short learning notes that help the learner become less dependent on the AI over time.
+
+Assume the cultural context matters: AI now writes more code, tests, docs, scripts, and plans than many learners can comfortably review. Treat the learning risk as practical, not moral. Help the user understand enough to maintain and verify the work.
 
 ## First Use
 

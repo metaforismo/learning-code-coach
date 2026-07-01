@@ -13,6 +13,9 @@ SKILL_DIR = ROOT / "learning-code-coach"
 SKILL = SKILL_DIR / "SKILL.md"
 OPENAI_YAML = SKILL_DIR / "agents" / "openai.yaml"
 PLAYBOOK = SKILL_DIR / "references" / "coach-playbook.md"
+README = ROOT / "README.md"
+INSTALL_DOC = ROOT / "docs" / "installation-and-profile.md"
+EXAMPLES_DIR = ROOT / "examples"
 
 
 def fail(message: str) -> None:
@@ -56,12 +59,35 @@ def assert_contains(path: Path, text: str, phrases: list[str]) -> None:
         fail(f"{path.relative_to(ROOT)} is missing expected phrase(s): {missing}")
 
 
+def assert_examples() -> None:
+    expected = [
+        "react-state-refactor.md",
+        "backend-api.md",
+        "swiftui-view-model.md",
+        "debug-failing-test.md",
+        "code-review-ai-output.md",
+    ]
+    for name in expected:
+        path = EXAMPLES_DIR / name
+        text = read(path)
+        assert_no_placeholders(path, text)
+        assert_contains(path, text, ["User Prompt", "Coached Response Shape", "Learning Target"])
+
+
 def main() -> None:
     skill_text = read(SKILL)
     openai_text = read(OPENAI_YAML)
     playbook_text = read(PLAYBOOK)
+    readme_text = read(README)
+    install_text = read(INSTALL_DOC)
 
-    for path, text in [(SKILL, skill_text), (OPENAI_YAML, openai_text), (PLAYBOOK, playbook_text)]:
+    for path, text in [
+        (SKILL, skill_text),
+        (OPENAI_YAML, openai_text),
+        (PLAYBOOK, playbook_text),
+        (README, readme_text),
+        (INSTALL_DOC, install_text),
+    ]:
         assert_no_placeholders(path, text)
 
     meta = parse_frontmatter(skill_text)
@@ -81,6 +107,7 @@ def main() -> None:
             "data",
             "DevOps",
             "AI-generated output",
+            "Treat the learning risk as practical, not moral.",
             "Do not persist personal learning details silently",
             "references/coach-playbook.md",
         ],
@@ -96,6 +123,28 @@ def main() -> None:
             "AI Collaboration",
         ],
     )
+    assert_contains(
+        README,
+        readme_text,
+        [
+            "instruction pack",
+            "the coaching method is general",
+            "In the last few months, AI has started to write more and more",
+            "Demo",
+            "Real Use Cases",
+        ],
+    )
+    assert_contains(
+        INSTALL_DOC,
+        install_text,
+        [
+            "Install As A Codex Skill",
+            "Use With Other Assistants",
+            "Configure A Learner Profile",
+            "should not store personal learning data silently",
+        ],
+    )
+    assert_examples()
     assert_contains(
         OPENAI_YAML,
         openai_text,
