@@ -1,0 +1,4 @@
+interface:
+  display_name: "Learning Code Coach"
+  short_description: "Learn technical work while building"
+  default_prompt: "Use $learning-code-coach to help me complete this technical task while explaining the important choices at my level."

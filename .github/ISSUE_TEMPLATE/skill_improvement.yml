@@ -1,0 +1,26 @@
+name: Skill improvement
+description: Suggest a coaching pattern, calibration improvement, or example.
+title: "[Improvement]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Scenario
+      description: What task or learner situation should the skill handle better?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-change
+    attributes:
+      label: Proposed change
+      description: What should the skill say or do differently?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example prompt or output
+      description: Optional concrete example.
+    validations:
+      required: false
